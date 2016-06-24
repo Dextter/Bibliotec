@@ -8,6 +8,7 @@ package br.ifrn.tads.poo.biblioteca;
 import br.ifrn.tads.poo.biblioteca.acervo.ItemAcervo;
 import br.ifrn.tads.poo.biblioteca.usuario.Usuario;
 import java.util.List;
+import java.util.Date;
 
 /**
  *
@@ -16,9 +17,8 @@ import java.util.List;
 public class Biblioteca {
     String nomeBiblioteca;
     
-    List<Usuario> usuarios;    
-    List<ItemAcervo> itens;
-    
+    Usuario usuario;    
+    ItemAcervo  item;
     
     public Biblioteca(String nomeBiblioteca) {
         
@@ -33,7 +33,8 @@ public class Biblioteca {
         this.nomeBiblioteca = nomeBiblioteca;
     }
     
-    double calcularValorMulta(){
+    double calcularValorMulta(Date dia){
+        
         return 0;
     }
 }
