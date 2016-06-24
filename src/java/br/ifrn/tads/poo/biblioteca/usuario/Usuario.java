@@ -12,6 +12,8 @@ import br.ifrn.tads.poo.biblioteca.acervo.ItemAcervo;
 public class Usuario {
     int codUsuario;
     String nome, endereco, cpf;
+    
+    ItemAcervo item;
 
     public Usuario(int codUsuario, String nome, String endereco, String cpf) {
         this.codUsuario = codUsuario;

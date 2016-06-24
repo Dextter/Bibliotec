@@ -5,11 +5,61 @@
  */
 package br.ifrn.tads.poo.biblioteca.acervo;
 
+import java.util.Date;
+
 /**
  *
  * @author pablopc
  */
-public class Apostila {
+public class Apostila extends ItemAcervo {
     String autor, titulo;
     int quantidade;
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Apostila(double custo, int codigoItem, boolean pago, Date dataAluguel, Date dataDevolucao) {
+        super(custo, codigoItem, pago, dataAluguel, dataDevolucao);
+    }
+
+    @Override
+    public void alugar() {
+        
+    }
+
+    @Override
+    public double devolver() {
+        return 0;
+    }
+
+    @Override
+    public boolean estaPago() {
+        return true;
+    }
+
+    @Override
+    public void reservar() {
+        
+    }
 }

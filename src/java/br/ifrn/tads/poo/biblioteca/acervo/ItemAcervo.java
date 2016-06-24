@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author pablopc
  */
-public class ItemAcervo {
+public abstract class ItemAcervo {
     double custo;
     int codigoItem;
     boolean pago;
@@ -25,19 +25,12 @@ public class ItemAcervo {
         this.dataDevolucao = dataDevolucao;
     }
     
-    void alugar(){
+    public abstract void alugar();
         
-    }
+    public abstract double devolver();
     
-    double devolver(){
-        return 0;
-    }
+    public abstract boolean estaPago();
     
-    boolean estaPago(){
-        return true;
-     }
+    public abstract void reservar();
     
-    void reservar(){
-    
-    }
 }

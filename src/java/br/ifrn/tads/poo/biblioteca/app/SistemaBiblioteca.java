@@ -5,6 +5,8 @@
  */
 package br.ifrn.tads.poo.biblioteca.app;
 
+import br.ifrn.tads.poo.biblioteca.Biblioteca;
+
 /**
  *
  * @author pablopc
@@ -15,7 +17,9 @@ public class SistemaBiblioteca {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Biblioteca bib = new Biblioteca("Nathanael Gomes");
+        
+        
     }
     
 }

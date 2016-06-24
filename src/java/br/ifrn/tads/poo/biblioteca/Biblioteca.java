@@ -5,14 +5,23 @@
  */
 package br.ifrn.tads.poo.biblioteca;
 
+import br.ifrn.tads.poo.biblioteca.acervo.ItemAcervo;
+import br.ifrn.tads.poo.biblioteca.usuario.Usuario;
+import java.util.List;
+
 /**
  *
  * @author pablopc
  */
 public class Biblioteca {
     String nomeBiblioteca;
-
+    
+    List<Usuario> usuarios;    
+    List<ItemAcervo> itens;
+    
+    
     public Biblioteca(String nomeBiblioteca) {
+        
         this.nomeBiblioteca = nomeBiblioteca;
     }    
     
