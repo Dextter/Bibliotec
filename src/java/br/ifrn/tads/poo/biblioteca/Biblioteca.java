@@ -5,7 +5,10 @@
  */
 package br.ifrn.tads.poo.biblioteca;
 
+import br.ifrn.tads.poo.biblioteca.acervo.Apostila;
 import br.ifrn.tads.poo.biblioteca.acervo.ItemAcervo;
+import br.ifrn.tads.poo.biblioteca.acervo.Livro;
+import br.ifrn.tads.poo.biblioteca.acervo.Texto;
 import br.ifrn.tads.poo.biblioteca.usuario.Usuario;
 import java.util.List;
 import java.util.Date;
@@ -17,8 +20,10 @@ import java.util.Date;
 public class Biblioteca {
     String nomeBiblioteca;
     
-    Usuario usuario;    
-    ItemAcervo  item;
+    Usuario usuario = new Usuario();
+    Livro livro = new Livro();
+    Apostila apostila = new Apostila();
+    Texto texto = new Texto();
     
     public Biblioteca(String nomeBiblioteca) {
         

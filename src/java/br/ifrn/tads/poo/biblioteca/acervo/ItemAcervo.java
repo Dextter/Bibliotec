@@ -25,6 +25,8 @@ public abstract class ItemAcervo {
         this.dataDevolucao = dataDevolucao;
     }
     
+    public ItemAcervo(){}
+    
     public abstract void alugar();
         
     public abstract double devolver();

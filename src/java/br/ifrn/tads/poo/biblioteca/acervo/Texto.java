@@ -25,6 +25,8 @@ public class Texto extends ItemAcervo{
     public Texto(double custo, int codigoItem, boolean pago, Date dataAluguel, Date dataDevolucao) {
         super(custo, codigoItem, pago, dataAluguel, dataDevolucao);
     }
+    
+    public Texto(){}
 
     @Override
     public void alugar() {

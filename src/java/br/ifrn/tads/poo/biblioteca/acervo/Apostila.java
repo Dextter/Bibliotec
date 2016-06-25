@@ -42,6 +42,8 @@ public class Apostila extends ItemAcervo {
     public Apostila(double custo, int codigoItem, boolean pago, Date dataAluguel, Date dataDevolucao) {
         super(custo, codigoItem, pago, dataAluguel, dataDevolucao);
     }
+    
+    public Apostila(){}
 
     @Override
     public void alugar() {

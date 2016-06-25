@@ -59,7 +59,9 @@ public class Livro extends ItemAcervo{
     public Livro(double custo, int codigoItem, boolean pago, Date dataAluguel, Date dataDevolucao) {
         super(custo, codigoItem, pago, dataAluguel, dataDevolucao);
     }
-
+    
+    public Livro(){}
+    
     @Override
     public void alugar() {
         
