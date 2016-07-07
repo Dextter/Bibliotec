@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class Connection {
     private String driver = "org.postgresql.Driver";
-     private String url = "jdbc:postgresql://localhost/bibliotec", user = "HPTNDevelopers", password = "projetopoo";
+     private String url = "jdbc:postgresql://localhost/nomedobanco", user = "nomedousuario", password = "projetopoo";
      public java.sql.Connection getConnection() throws ClassNotFoundException{
          try{
              Class.forName(driver);

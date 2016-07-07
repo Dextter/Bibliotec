@@ -17,8 +17,7 @@ public class SistemaBiblioteca {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Biblioteca bib = new Biblioteca("Nathanael Gomes");
-        
+        Biblioteca bib = new Biblioteca("Nathanael Gomes");        
         
     }
     
