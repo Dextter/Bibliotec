@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -134,8 +134,8 @@ public class BeanLogar {
          
     }
     public String logout(){
-       HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-       session.invalidate();
+      // HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+      // session.invalidate();
        return "index";
     }
     
