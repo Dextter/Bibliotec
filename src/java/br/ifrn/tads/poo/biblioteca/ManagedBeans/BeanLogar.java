@@ -136,7 +136,7 @@ public class BeanLogar {
     public String logout(){
        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
        session.invalidate();
-        return "index";
+       return "index";
     }
     
 }

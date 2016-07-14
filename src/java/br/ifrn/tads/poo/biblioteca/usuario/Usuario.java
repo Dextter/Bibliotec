@@ -70,9 +70,7 @@ public class Usuario {
     public void setItem(ItemAcervo item) {
         this.item = item;
     }
-
-    
-    
+        
     public Usuario(int codUsuario,boolean ativo, String nome, String endereco, String cpf) {
         this.codUsuario = codUsuario;
         this.ativo = ativo;
@@ -84,7 +82,7 @@ public class Usuario {
     public Usuario (){
     
     }
-    
+        
     void pagar(){
     
     }

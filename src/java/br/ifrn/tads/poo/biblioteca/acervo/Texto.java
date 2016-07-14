@@ -51,7 +51,7 @@ public class Texto extends ItemAcervo{
         
         //subtraia 1 desta lista
     }
-
+    
     @Override
     public double devolver() {
         return 0;
