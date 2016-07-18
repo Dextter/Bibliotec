@@ -7,6 +7,7 @@ package br.ifrn.tads.poo.biblioteca.ManagedBeans;
 
 import br.ifrn.tads.poo.biblioteca.DAO.ItemAcervoDAO;
 import br.ifrn.tads.poo.biblioteca.acervo.Livro;
+import java.sql.SQLException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 
@@ -35,9 +36,12 @@ public class acervoBean {
         this.acervo = acervo;
     }
     
-    public final void listarAcervo() throws ClassNotFoundException{        
+    public final void listarAcervo() throws ClassNotFoundException, SQLException{        
         this.acervoDao = new ItemAcervoDAO();
         this.acervo = this.acervoDao.listarLivros();
+        for (Livro li: acervo){
+                    System.out.println(li.getTitulo());
+                }
         if(acervo != null){
             System.out.println("Lista vazia");
         }

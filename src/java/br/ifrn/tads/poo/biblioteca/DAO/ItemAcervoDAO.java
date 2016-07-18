@@ -6,11 +6,9 @@
 package br.ifrn.tads.poo.biblioteca.DAO;
 
 import br.ifrn.tads.poo.biblioteca.acervo.Apostila;
-import br.ifrn.tads.poo.biblioteca.acervo.ItemAcervo;
 import br.ifrn.tads.poo.biblioteca.acervo.Livro;
 import br.ifrn.tads.poo.biblioteca.acervo.Texto;
 import br.ifrn.tads.poo.biblioteca.connectionFactory.ConnectionDB;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -106,33 +104,21 @@ public class ItemAcervoDAO {
         return null;
     }   
     
-    public List<Livro> listarLivros(){
-        String sqls = "SELECT * FROM livro";         
-         List<Livro> livros = new ArrayList<>();
-        try (PreparedStatement pst = cone.prepareStatement(sqls)){
-            pst.setString(1, "nao");
-            ResultSet result = pst.executeQuery();
-                while(result.next()){
-                  Livro livro = new Livro();                        
-                    livro.setTitulo("livro_titulo");
-                    //livros.setAutor("livro_autor");
-                    //livros.setISBN("isbn_livro");
-                    //livros.setEdicao(Integer.SIZE);
-                  livros.add(livro);                    
-                }
-                return livros;
-        } catch (SQLException ex) {
-            Logger.getLogger(ItemAcervoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            if(cone != null){
-                try {
-                    cone.close();                    
-                } catch (SQLException ex) {
-                    Logger.getLogger(ItemAcervoDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }       
-        return null;
+    public List<Livro> listarLivros() throws SQLException{
+         PreparedStatement stm = this.cone.prepareStatement("SELECT * FROM livro");
+         ResultSet rs = stm.executeQuery();       
+         List<Livro> livros = new ArrayList<>();                    
+             while(rs.next()){
+                 Livro livro = new Livro();                        
+                 livro.setTitulo("livro_titulo");
+                 livro.setAutor("livro_autor");
+                 livro.setISBN("isbn_livro");
+                 livro.setEdicao(6);
+                 livros.add(livro);                    
+             }         
+             rs.close();
+             stm.close();
+             return livros;                
     }  
     
 }

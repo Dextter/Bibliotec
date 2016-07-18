@@ -20,26 +20,56 @@
                     Bibliotec - A Melhor Maneira de Aprender
                 </p:layoutUnit>
                 <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
-                    &copy; HPTN Developers
+                    &copy;HPTN Developers
                 </p:layoutUnit>
                 <p:layoutUnit position="west">
                     <p:menu>
                         <p:submenu label="Ações">
-                            <p:menuitem value="Emprestar" url="f" />
-                            <p:menuitem value="Emprestados" url="" />
-                            <p:menuitem value="Acervo" url="" />
-                            <p:menuitem value="Reservas" url="" />
+                            <p:menuitem value="Emprestar" url="#" />
+                            <p:menuitem value="Emprestados" url="#" />
+                            <p:menuitem value="Acervo" url="#" />
+                            <p:menuitem value="Reservas" url="#" />
                         </p:submenu>
                     </p:menu>
                 </p:layoutUnit>
                 <p:layoutUnit position="center">
                     <h:form>
                         <h:panelGrid columns="4" cellpadding="5">                                                        
-                            <p:selectOneMenu value="#{acervoBean.acervo}" label="Selecione um livro:" id="livroId">
-                                <f:selectItems value="#{acervoBean.acervoDao}" />                                                                        
-                            </p:selectOneMenu>
-                            <h:message  for="livroId" />
-                            <p:inputText value="#{acervoBean.acervoDao}" disabled="true" label="Livro escolhido:"/>
+                            <p:dataTable var="livro" value="#{acervoBean.acervo}">
+                                <f:facet name="header" ><p:outputLabel value="Acervo" /></f:facet>
+                                <p:column style="width:16px">
+                                <p:rowToggler />
+                                </p:column>
+                                    <p:column headerText="Livro">
+                                        <f:facet name="header" ><p:outputLabel value="Livro" /></f:facet>
+                                        <p:outputLabel value="#{livro.titulo}" />
+                                    </p:column>                                                                        
+                                <p:rowExpansion>
+                                <p:panelGrid columns="4" columnClasses="label,value" style="width: 700px">
+                                    <f:facet name="header">
+                                        <p:outputLabel value="Informações Adicionais"/> 
+                                    </f:facet>
+                                    <h:outputText value="Título: "/>
+                                    <p:outputLabel value="Autor:" />
+                                    <p:outputLabel value="ISBN:" />
+                                    <p:outputLabel value="Edição:" />                                                                                
+                                    <h:outputText value="#{livro.titulo}"/>                                            
+                                    <p:outputLabel value="#{livro.autor}"/>                                            
+                                    <p:outputLabel value="#{livro.ISBN}"/>                                                
+                                    <p:outputLabel value="#{livro.edicao}"/>                                                                                    
+                                    <p:commandLink title="Escolherr" action="{}"
+                                                       style="margin-left: 16.7%">
+                                    <p:confirm header="Confirmação" message="Escolher?"
+                                                       icon="ui-icon-alert" />
+                                        <p:graphicImage value="img/save.png"/>                                        
+                                    </p:commandLink>
+                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                        <p:commandButton value="Alugar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="Reservar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </p:confirmDialog>                                        
+                                    </p:panelGrid>
+              </p:rowExpansion>
+            </p:dataTable>
                         </h:panelGrid>
                     </h:form>
                 </p:layoutUnit>

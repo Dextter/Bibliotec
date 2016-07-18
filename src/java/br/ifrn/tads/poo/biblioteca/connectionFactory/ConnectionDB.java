@@ -5,6 +5,7 @@
  */
 package br.ifrn.tads.poo.biblioteca.connectionFactory;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -12,18 +13,14 @@ import java.sql.SQLException;
  *
  * @author pablopc
  */
-public class ConnectionDB {
-    private String driver = "org.postgresql.Driver";
-     private String url = "jdbc:postgresql://localhost/bibliotec", user = "postgres", password = "euamoNathalia";
-     public java.sql.Connection getConnection() throws ClassNotFoundException{
-         try{
-              System.out.println("conectou");
-             Class.forName(driver);
+public class ConnectionDB {    
+     private String url = "jdbc:postgresql://localhost:5432/bibliotec", user = "postgres", password = "euamoNathalia";
+     public Connection getConnection() throws ClassNotFoundException {
+         try{              
+             Class.forName("org.postgresql.Driver");
              return DriverManager.getConnection(url,user,password);            
-         }catch(SQLException e){
-             System.out.println(" nao conectou");
-             throw new RuntimeException(e);
-             
+         }catch(SQLException e){             
+             throw new RuntimeException(e);             
          }
      }
 }
