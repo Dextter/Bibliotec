@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:mp="http://primefaces.org/ui/material"
       xmlns:p="http://primefaces.org/ui">
 
     <f:view contentType="text/html">
@@ -12,19 +14,14 @@
                 <title>Bibliotec</title>
             </f:facet>
         </h:head>
-
         <h:body>
-
             <p:layout fullPage="true">
-
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Bibliotec - A Smarther Way to Learn
+                <p:layoutUnit position="north" size="80" resizable="true" closable="true" collapsible="true">
+                    Bibliotec - A Melhor Maneira de Aprender
                 </p:layoutUnit>
-
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
                     &copy; HPTN Developers
                 </p:layoutUnit>
-
                 <p:layoutUnit position="west">
                     <p:menu>
                         <p:submenu label="Ações">
@@ -32,20 +29,22 @@
                             <p:menuitem value="Emprestados" url="" />
                             <p:menuitem value="Acervo" url="" />
                             <p:menuitem value="Reservas" url="" />
-
                         </p:submenu>
-
                     </p:menu>
                 </p:layoutUnit>
-
                 <p:layoutUnit position="center">
-                    Inicio
+                    <h:form>
+                        <h:panelGrid columns="4" cellpadding="5">                                                        
+                            <p:selectOneMenu value="#{acervoBean.acervo}" label="Selecione um livro:" id="livroId">
+                                <f:selectItems value="#{acervoBean.acervoDao}" />                                                                        
+                            </p:selectOneMenu>
+                            <h:message  for="livroId" />
+                            <p:inputText value="#{acervoBean.acervoDao}" disabled="true" label="Livro escolhido:"/>
+                        </h:panelGrid>
+                    </h:form>
                 </p:layoutUnit>
-
             </p:layout>
-
         </h:body>
-
     </f:view>
 </html>
 

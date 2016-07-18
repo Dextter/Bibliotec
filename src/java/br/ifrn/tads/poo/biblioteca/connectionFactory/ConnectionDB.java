@@ -14,13 +14,16 @@ import java.sql.SQLException;
  */
 public class ConnectionDB {
     private String driver = "org.postgresql.Driver";
-     private String url = "jdbc:postgresql://localhost/bibliotec", user = "HPTN", password = "projetopoo";
+     private String url = "jdbc:postgresql://localhost/bibliotec", user = "postgres", password = "euamoNathalia";
      public java.sql.Connection getConnection() throws ClassNotFoundException{
          try{
+              System.out.println("conectou");
              Class.forName(driver);
-             return DriverManager.getConnection(url,user,password);
+             return DriverManager.getConnection(url,user,password);            
          }catch(SQLException e){
+             System.out.println(" nao conectou");
              throw new RuntimeException(e);
+             
          }
      }
 }

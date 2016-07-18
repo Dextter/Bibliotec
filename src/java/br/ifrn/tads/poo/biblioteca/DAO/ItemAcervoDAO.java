@@ -10,11 +10,14 @@ import br.ifrn.tads.poo.biblioteca.acervo.ItemAcervo;
 import br.ifrn.tads.poo.biblioteca.acervo.Livro;
 import br.ifrn.tads.poo.biblioteca.acervo.Texto;
 import br.ifrn.tads.poo.biblioteca.connectionFactory.ConnectionDB;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -24,6 +27,11 @@ import java.util.logging.Logger;
 public class ItemAcervoDAO {
     private Connection cone; 
             
+    public ItemAcervoDAO()throws ClassNotFoundException{
+        this.cone = new ConnectionDB().getConnection();
+        System.out.println("Deu Tudo Certo!");
+    }
+    
     public Texto selecionarTexto(Texto txt){
         String sqls = "SELECT * FROM acervo WHERE titulo = ?";         
         try (PreparedStatement pst = cone.prepareStatement(sqls)){                         
@@ -98,18 +106,21 @@ public class ItemAcervoDAO {
         return null;
     }   
     
-    public ItemAcervo listarItens(ItemAcervo itens){
-        String sqls = "SELECT * FROM acervo";         
-        try (PreparedStatement pst = cone.prepareStatement(sqls)){                         
+    public List<Livro> listarLivros(){
+        String sqls = "SELECT * FROM livro";         
+         List<Livro> livros = new ArrayList<>();
+        try (PreparedStatement pst = cone.prepareStatement(sqls)){
+            pst.setString(1, "nao");
             ResultSet result = pst.executeQuery();
-                if(result.next()){                    
-                    Livro livroEncontrado = new Livro();
-                    livroEncontrado.setTitulo(result.getString("titulo"));
-                    livroEncontrado.setAutor(result.getString("autor"));
-                    livroEncontrado.setISBN(result.getString("ISBN")); 
-                    livroEncontrado.setEdicao(result.getInt("edicao")); 
-                    return livroEncontrado;
+                while(result.next()){
+                  Livro livro = new Livro();                        
+                    livro.setTitulo("livro_titulo");
+                    //livros.setAutor("livro_autor");
+                    //livros.setISBN("isbn_livro");
+                    //livros.setEdicao(Integer.SIZE);
+                  livros.add(livro);                    
                 }
+                return livros;
         } catch (SQLException ex) {
             Logger.getLogger(ItemAcervoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
