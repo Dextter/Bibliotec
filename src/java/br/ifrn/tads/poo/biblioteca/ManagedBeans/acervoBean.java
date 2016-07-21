@@ -58,8 +58,8 @@ public class acervoBean {
     }
     
     public List<Livro> listarAcervo() throws ClassNotFoundException, SQLException{        
-        ItemAcervoDAO acervo = new ItemAcervoDAO();
-        this.livros = acervo.listarLivros();         
+        this.acervo = new ItemAcervoDAO();
+        this.livros = this.acervo.listarLivros();           
         if(livros == null){
             System.out.println("Lista de livros vazia");
         }

@@ -10,6 +10,7 @@ import br.ifrn.tads.poo.biblioteca.acervo.Livro;
 import br.ifrn.tads.poo.biblioteca.acervo.Texto;
 import br.ifrn.tads.poo.biblioteca.connectionFactory.ConnectionDB;
 import java.sql.Connection;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,10 +25,16 @@ import java.util.logging.Logger;
  */
 public class ItemAcervoDAO {
     private Connection cone; 
-            
+    private Statement stmt;
+    
     public ItemAcervoDAO() throws ClassNotFoundException{
-        this.cone = ConnectionDB.getConnection();        
-        System.out.println("Deu Tudo Certo!");
+//        this.stmt = ConnectionDB.getConnection(); 
+//        try {
+//            stmt = cone.createStatement();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ItemAcervoDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        System.out.println("Deu Tudo Certo!");
     }
     
     public Texto selecionarTexto(Texto txt){
@@ -105,33 +112,51 @@ public class ItemAcervoDAO {
     }   
     
     public List<Livro> listarLivros() throws SQLException{
-        String sqls = "SELECT * FROM livros WHERE titulo_livro = ?";         
+        //String sqls = "SELECT * FROM livros";         
         List<Livro> lista = new ArrayList<>();
-        Connection con = ConnectionDB.getConnection();
-        PreparedStatement pst = con.prepareStatement(sqls);
-            pst.setString(1, "nao");
-            ResultSet result = pst.executeQuery();
-            try{
-                while(result.next()){
-                    Livro livro = new Livro();
-                        livro.setISBN(result.getString("isbn_livro"));
-                        livro.setAutor(result.getString("autor_livro"));
-                        livro.setTitulo(result.getString("titulo_livro"));
-                        livro.setEdicao(result.getInt("edicao_livro"));                    
-                    lista.add(livro);                    
-                }
-        } catch (SQLException ex) {
-            Logger.getLogger(ItemAcervoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            if(con != null){
-                try {
-                    cone.close();                    
-                } catch (SQLException ex) {
-                    Logger.getLogger(ItemAcervoDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            }
+                
+        Livro livro = new Livro();
+        livro.setTitulo("Liv 1");
+        livro.setAutor("Aut 1");
+        livro.setISBN("1");
+        livro.setEdicao(1);
+        lista.add(livro);
+        
+        Livro livro2 = new Livro();
+        livro2.setTitulo("liv 2");
+        livro2.setAutor("Aut 2");
+        livro2.setISBN("2");
+        livro2.setEdicao(2);
+        lista.add(livro2);
+        
+        Livro livro3 = new Livro();
+        livro3.setTitulo("Liv 3");
+        livro3.setAutor("Aut 3");
+        livro3.setISBN("3");
+        livro3.setEdicao(3);
+        lista.add(livro3);
+        
+        Livro livro4 = new Livro();
+        livro4.setTitulo("iv 4");
+        livro4.setAutor("Aut 4");
+        livro4.setISBN("4");
+        livro4.setEdicao(4);
+        lista.add(livro4);
 
+        //Connection con = ConnectionDB.getConnection();        
+        //    ResultSet result = stmt.executeQuery(sqls);
+        //    try{
+        //        while(result.next()){
+        //            Livro livro = new Livro();
+        //                livro.setISBN(result.getString("isbn_livro"));
+        //                livro.setAutor(result.getString("autor_livro"));
+        //                livro.setTitulo(result.getString("titulo_livro"));
+        //                livro.setEdicao(result.getInt("edicao_livro"));                    
+        //            lista.add(livro);                    
+        //        }
+        //} catch (SQLException ex) {
+        //    Logger.getLogger(ItemAcervoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        //}         
         return lista;
     }
 }

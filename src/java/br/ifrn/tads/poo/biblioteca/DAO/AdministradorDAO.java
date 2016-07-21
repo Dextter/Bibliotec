@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,9 +21,10 @@ import java.util.logging.Logger;
  */
 public class AdministradorDAO {
     private Connection cone; 
+    private Statement stmt; 
     
     public AdministradorDAO() throws ClassNotFoundException{
-        this.cone =  new ConnectionDB().getConnection();        
+        this.stmt =  ConnectionDB.getConnection();        
         Administrador admin = new Administrador();
     }
     
