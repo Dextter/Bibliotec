@@ -25,8 +25,8 @@ import java.util.logging.Logger;
 public class ItemAcervoDAO {
     private Connection cone; 
             
-    public ItemAcervoDAO()throws ClassNotFoundException{
-        this.cone = new ConnectionDB().getConnection();
+    public ItemAcervoDAO() throws ClassNotFoundException{
+        this.cone = ConnectionDB.getConnection();        
         System.out.println("Deu Tudo Certo!");
     }
     
@@ -105,20 +105,33 @@ public class ItemAcervoDAO {
     }   
     
     public List<Livro> listarLivros() throws SQLException{
-         PreparedStatement stm = this.cone.prepareStatement("SELECT * FROM livro");
-         ResultSet rs = stm.executeQuery();       
-         List<Livro> livros = new ArrayList<>();                    
-             while(rs.next()){
-                 Livro livro = new Livro();                        
-                 livro.setTitulo("livro_titulo");
-                 livro.setAutor("livro_autor");
-                 livro.setISBN("isbn_livro");
-                 livro.setEdicao(6);
-                 livros.add(livro);                    
-             }         
-             rs.close();
-             stm.close();
-             return livros;                
-    }  
-    
+        String sqls = "SELECT * FROM livros WHERE titulo_livro = ?";         
+        List<Livro> lista = new ArrayList<>();
+        Connection con = ConnectionDB.getConnection();
+        PreparedStatement pst = con.prepareStatement(sqls);
+            pst.setString(1, "nao");
+            ResultSet result = pst.executeQuery();
+            try{
+                while(result.next()){
+                    Livro livro = new Livro();
+                        livro.setISBN(result.getString("isbn_livro"));
+                        livro.setAutor(result.getString("autor_livro"));
+                        livro.setTitulo(result.getString("titulo_livro"));
+                        livro.setEdicao(result.getInt("edicao_livro"));                    
+                    lista.add(livro);                    
+                }
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemAcervoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(con != null){
+                try {
+                    cone.close();                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(ItemAcervoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            }
+
+        return lista;
+    }
 }

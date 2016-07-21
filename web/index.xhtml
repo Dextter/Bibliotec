@@ -35,41 +35,41 @@
                 <p:layoutUnit position="center">
                     <h:form>
                         <h:panelGrid columns="4" cellpadding="5">                                                        
-                            <p:dataTable var="livro" value="#{acervoBean.acervo}">
+                            <p:dataTable var="book" value="#{acervoBean.livros}">
                                 <f:facet name="header" ><p:outputLabel value="Acervo" /></f:facet>
                                 <p:column style="width:16px">
-                                <p:rowToggler />
+                                    <p:rowToggler />
                                 </p:column>
                                     <p:column headerText="Livro">
                                         <f:facet name="header" ><p:outputLabel value="Livro" /></f:facet>
-                                        <p:outputLabel value="#{livro.titulo}" />
+                                        <p:outputLabel value="#{book.titulo}" />
                                     </p:column>                                                                        
                                 <p:rowExpansion>
-                                <p:panelGrid columns="4" columnClasses="label,value" style="width: 700px">
-                                    <f:facet name="header">
-                                        <p:outputLabel value="Informações Adicionais"/> 
-                                    </f:facet>
-                                    <h:outputText value="Título: "/>
-                                    <p:outputLabel value="Autor:" />
-                                    <p:outputLabel value="ISBN:" />
-                                    <p:outputLabel value="Edição:" />                                                                                
-                                    <h:outputText value="#{livro.titulo}"/>                                            
-                                    <p:outputLabel value="#{livro.autor}"/>                                            
-                                    <p:outputLabel value="#{livro.ISBN}"/>                                                
-                                    <p:outputLabel value="#{livro.edicao}"/>                                                                                    
-                                    <p:commandLink title="Escolherr" action="{}"
-                                                       style="margin-left: 16.7%">
-                                    <p:confirm header="Confirmação" message="Escolher?"
-                                                       icon="ui-icon-alert" />
-                                        <p:graphicImage value="img/save.png"/>                                        
-                                    </p:commandLink>
-                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                        <p:commandButton value="Alugar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                        <p:commandButton value="Reservar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                                    </p:confirmDialog>                                        
+                                    <p:panelGrid columns="4" columnClasses="label,value" style="width: 700px">
+                                        <f:facet name="header">
+                                            <p:outputLabel value="Informações Adicionais"/> 
+                                        </f:facet>
+                                        <h:outputText value="Título: "/>
+                                        <p:outputLabel value="Autor:" />
+                                        <p:outputLabel value="ISBN:" />
+                                        <p:outputLabel value="Edição:" />                                                                                
+                                        <h:outputText value="#{book.titulo}"/>                                            
+                                        <p:outputLabel value="#{book.autor}"/>                                            
+                                        <p:outputLabel value="#{book.ISBN}"/>                                                
+                                        <p:outputLabel value="#{book.edicao}"/>                                                                                    
+                                        <p:commandLink title="Escolherr" action="{}"
+                                                           style="margin-left: 16.7%">
+                                        <p:confirm header="Confirmação" message="Escolher?"
+                                                           icon="ui-icon-alert" />
+                                            <p:graphicImage value="img/save.png"/>                                        
+                                        </p:commandLink>
+                                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                            <p:commandButton value="Alugar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                            <p:commandButton value="Reservar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                        </p:confirmDialog>                                        
                                     </p:panelGrid>
-              </p:rowExpansion>
-            </p:dataTable>
+                                    </p:rowExpansion>
+                                </p:dataTable>
                         </h:panelGrid>
                     </h:form>
                 </p:layoutUnit>

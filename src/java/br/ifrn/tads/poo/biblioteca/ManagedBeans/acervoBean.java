@@ -6,7 +6,9 @@
 package br.ifrn.tads.poo.biblioteca.ManagedBeans;
 
 import br.ifrn.tads.poo.biblioteca.DAO.ItemAcervoDAO;
+import br.ifrn.tads.poo.biblioteca.acervo.Apostila;
 import br.ifrn.tads.poo.biblioteca.acervo.Livro;
+import br.ifrn.tads.poo.biblioteca.acervo.Texto;
 import java.sql.SQLException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -17,33 +19,50 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class acervoBean {
-    private List<Livro> acervo;
-    private ItemAcervoDAO acervoDao;
+    private List<Livro> livros;
+    private List<Apostila> apostilas;
+    private List<Texto> textos;
+    private ItemAcervoDAO acervo;
 
-    public ItemAcervoDAO getAcervoDao() {
-        return acervoDao;
+    public List<Livro> getLivros() throws ClassNotFoundException, SQLException {        
+        listarAcervo();
+        return livros;
     }
 
-    public void setAcervoDao(ItemAcervoDAO acervoDao) {
-        this.acervoDao = acervoDao;
+    public void setLivros(List<Livro> livros) {
+        this.livros = livros;
     }
 
-    public List<Livro> getAcervo() {
+    public List<Apostila> getApostilas() {
+        return apostilas;
+    }
+
+    public void setApostilas(List<Apostila> apostilas) {
+        this.apostilas = apostilas;
+    }
+
+    public List<Texto> getTextos() {
+        return textos;
+    }
+
+    public void setTextos(List<Texto> textos) {
+        this.textos = textos;
+    }
+
+    public ItemAcervoDAO getAcervo() {
         return acervo;
     }
 
-    public void setAcervo(List<Livro> acervo) {
+    public void setAcervo(ItemAcervoDAO acervo) {
         this.acervo = acervo;
     }
     
-    public final void listarAcervo() throws ClassNotFoundException, SQLException{        
-        this.acervoDao = new ItemAcervoDAO();
-        this.acervo = this.acervoDao.listarLivros();
-        for (Livro li: acervo){
-                    System.out.println(li.getTitulo());
-                }
-        if(acervo != null){
-            System.out.println("Lista vazia");
+    public List<Livro> listarAcervo() throws ClassNotFoundException, SQLException{        
+        ItemAcervoDAO acervo = new ItemAcervoDAO();
+        this.livros = acervo.listarLivros();         
+        if(livros == null){
+            System.out.println("Lista de livros vazia");
         }
+        return livros;
     }
 }

@@ -14,13 +14,23 @@ import java.sql.SQLException;
  * @author pablopc
  */
 public class ConnectionDB {    
-     private String url = "jdbc:postgresql://localhost:5432/bibliotec", user = "postgres", password = "euamoNathalia";
-     public Connection getConnection() throws ClassNotFoundException {
-         try{              
-             Class.forName("org.postgresql.Driver");
-             return DriverManager.getConnection(url,user,password);            
-         }catch(SQLException e){             
-             throw new RuntimeException(e);             
+     private static Connection con = null;
+     
+             private static final String driver  = "org.postgresql.Driver";
+             private static final String url = "jdbc:postgresql://localhost:5432";
+             private static final String usuario = "postgres";
+             private static final String senha = "projetopoo";
+                   
+     public static Connection getConnection() {        
+        try {
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, usuario, senha);   
+            return con;
+         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+         } catch (SQLException e){
+             e.printStackTrace();
          }
-     }
+            return con;                                
+     } 
 }
